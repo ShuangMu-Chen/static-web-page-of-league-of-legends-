@@ -1,0 +1,392 @@
+div,p,h1,h2,h3,h5,h4,h6,ul,ol,li,header,footer,section,main,video,audio,a,span,nav,body{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.w1300{
+    margin: 0 auto;
+    width: 1358px;
+}
+.img{
+    display: block;
+}
+a{
+    text-decoration: none!important;
+}
+li{
+    list-style: none;
+}
+.sp-top{
+    background: url("../img/topfoot-spr.png") no-repeat;
+    background-size: 405px 178px;
+}
+.sp-comm {
+    background: url('../images/comm-spr.png') no-repeat;
+    background-size: 393px 200px;
+}
+.center-left{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+/* 更多按钮箭头处理 */
+.comm-more {
+    display: inline-block;
+    margin-left: 5px;
+    width: 15px;
+    height: 9px;
+    .sp-comm;
+    background-position: -213px -126px;
+
+    &.move {
+        animation: commMoreArrowMove 2s infinite 0.5s;
+    }
+
+    // 需要实现的动画
+    @keyframes commMoreArrowMove {
+
+        from,
+        to {
+            transform: translate3d(0, 0, 0);
+        }
+
+        10%,
+        30%,
+        50%,
+        70%,
+        90% {
+            transform: translate3d(-3px, 0, 0);
+        }
+
+        20%,
+        40%,
+        60%,
+        80% {
+            transform: translate3d(3px, 0, 0);
+        }
+    }
+}
+
+
+.part-tab-title{
+    height: 35px;
+    margin-bottom:0;
+    padding: 0;
+    color: #676767;
+    font-weight: 200;
+    li{
+        height: 35px;
+        width: 40px;
+        float: left;
+        cursor: pointer;
+        line-height: 24px;
+        font-size: 18px;
+        margin: 0 74px 0 0;
+        position: relative;
+        &:nth-last-child(1){
+            margin: 0;
+        }
+    }
+}
+
+.selected{
+    color: #1da6ba;
+    font-weight: 700;
+    &::after{
+        content: "";
+        display: block;
+        position: absolute;
+        bottom:  -3px;
+        left: 0;
+        background: url('../img/tab-title-selected.png');
+        height: 7px;
+        width: 0%;
+        background-position: center center;
+        transition: all .2s;
+        animation: width-change .1s linear;
+        animation-fill-mode: forwards;
+    }
+}
+
+@keyframes width-change {
+    0%{
+        width: 0%;
+        left: 17px;
+    }
+    100%{
+        width: 100%;
+        left: 0;
+        
+    }
+}
+
+.herf-mask{
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.icon-zhiyin,.icon-gift,.icon-kh,.icon-fhcx,.icon-yxzl,.icon-xgzd,.icon-tft,.icon-101,.icon-yz,.icon-wxbd,.icon-hyp,.icon-666{
+    background: url("../images/comm-spr.png");
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 22px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.icon-kh,.icon-fhcx,.icon-yxzl,.icon-xgzd,.icon-tft,.icon-101,.icon-yz,.icon-wxbd{
+    width: 22px;
+    height: 20px;
+    margin: -2px 4px 0 4px;
+}
+.icon-zhiyin{
+    background-position: -244px -72px;
+}
+.icon-gift{
+    background-position: -285px -99px;
+}
+.icon-kh{
+    background-position: -316px -12px;
+}
+.icon-fhcx{
+   background-position:  -219px -72px;
+}
+.icon-yxzl{
+    background-position: -343px -12px;
+}
+.icon-xgzd{
+    background-position: -193px -72px;
+}
+.icon-tft{
+    background-position: -280px -125px;
+}
+.icon-101{
+    background-position: -371px -12px;
+}
+.icon-yz{
+    background-position: -274px -46px;
+}
+.icon-wxbd{
+    background-position: -193px -46px;
+}
+
+/* 通用动画 */
+@keyframes jump {
+    0% {
+        transform: translate(0);
+    }
+
+    10% {
+        transform: translateY(5px) scaleX(1.2) scaleY(.8);
+    }
+
+    30% {
+        transform: translateY(-13px) scaleX(1) scaleY(1) rotateZ(5deg);
+    }
+
+    50% {
+        transform: translateY(0) scale(1) rotateZ(0);
+    }
+
+    55% {
+        transform: translateY(0) scaleX(1.1) scaleY(.9) rotateZ(0);
+    }
+
+    70% {
+        transform: translateY(-4px) scaleX(1) scaleY(1) rotateZ(-2deg);
+    }
+
+    80% {
+        transform: translateY(0) scaleX(1) scaleY(1) rotateZ(0);
+    }
+
+    85% {
+        transform: translateY(0) scaleX(1.05) scaleY(.95) rotateZ(0);
+    }
+
+    100% {
+        transform: translateY(0) scaleX(1) scaleY(1);
+    }
+}
+
+
+// 上移效果
+&.up-move {
+    animation: divUpMove .1s;
+}
+
+// 需要实现的动画
+@keyframes divUpMove {
+
+    0%{
+        transform: translateY(5px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}
+
+
+// 缓慢上移效果
+&.up-move-2 {
+    animation: divUpMove-2 .5s;
+}
+
+// 需要实现的动画
+@keyframes divUpMove-2 {
+
+    0%{
+        transform: translateY(5px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+.icon-new-1{
+    position: absolute;
+    width: 29px;
+    height: 14px;
+    right: 10px;
+    bottom: 8px;
+    background: url("../img/comm-spr.png");
+    background-position: -301px -46px;
+}
+
+.part-h2-title{
+    position: relative;
+    h2{
+        display: inline-block;
+        font-size: 24px;
+        font-weight: 400;
+        &::before{
+            content: '\0020';
+            display: inline-block;
+            vertical-align: middle;
+            width: 4px;
+            height: 28px;
+            background-color: #1da6ba;
+            margin-right: 10px;
+        }
+    }
+    .part-tab-title{
+        width: 605px;
+        position: absolute;
+        top: 0;
+        left: 219px;
+        border-bottom: 1px #e0e2e2 solid;
+        li{
+            line-height: 35px;
+            font-size: 16px;
+            margin: 0 40px 0 0;
+            width: auto;
+            min-width: 40px;
+            text-align: center;
+        }
+        
+    }
+    .herf-more{
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 2px;
+        height: 35px;
+        font-size: 12px;
+        line-height: 35px;
+        color: #7ea1a6;
+        z-index: 2;
+        &:hover{
+            color: #7ea1a6;
+        }
+    }
+
+}
+
+.icon-hyp{
+    background-position: -369px -46px;
+    width: 13px;
+    height: 12px;
+    margin-left: 2px;
+    margin-top: -2px;
+}
+
+.icon-666{
+    background: url("../images/index-spr.png");
+    background-position: -456px -226px;
+    width: 23px;
+    height: 17px;
+    margin-bottom: 3px;
+}
+
+.week-free-a{
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: url("../images/index-spr.png");
+    background-position: -193px -253px;
+    text-align: center;
+    line-height: 58px;
+    color: white;
+    cursor: pointer;
+    >.comm-more{
+        background-position: -342px -99px;
+    }
+    .inline-icon-0-left,.inline-icon-0-right{
+        
+        display: inline-block;
+        width: 20px;
+        height: 9px;
+        background: url("../images/index-spr.png");
+        margin:  -1px 12px 0 12px;
+    }
+    .inline-icon-0-left{
+        background-position: -531px -226px;
+    }
+    .inline-icon-0-right{
+        background-position: -506px -226px;
+    }
+    &:hover{
+        color: white;
+    }
+}
+.partner-list-wrapper{
+    display: none;
+    position: absolute;
+    width: 239px;
+    height: 266px;
+    background-color: white;
+    left: 0;
+    top: 58px;
+    box-shadow: 0 3px 10px #ccc;
+    padding: 6px 0;
+    text-align: left;
+    overflow: auto;
+    transition: all .3s;
+    transform: translateY(-10px);
+    ul{
+        margin: 0;
+        padding: 0;
+        li{
+            margin: 8px 0;
+            padding-left: 12px;
+            >a{
+                display: block;
+                width: 100%;
+                height: 100%;
+                font-size: 12px;
+                color: #676767;
+                line-height: 19px;
+            }
+        }
+    }
+    
+    
+}
